@@ -17,7 +17,7 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     photo = update.message.photo[-1]
     file = await context.bot.get_file(photo.file_id)
     img_bytes = requests.get(file.file_path).content
-    API_URL = "https://api-inference.huggingface.co/models/lllyasviel/sd-controlnet-canny"
+    API_URL = "https://api-inference.huggingface.co/models/timbrooks/instruct-pix2pix"
     headers = {"Authorization": f"Bearer {HF_TOKEN}"}
     response = requests.post(API_URL, headers=headers, data=img_bytes)
     if response.status_code == 200:
